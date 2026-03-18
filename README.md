@@ -153,9 +153,18 @@ Make sure your files match:
 
 ### TypeScript compile / config issues
 Confirm these exist:
-- `tsconfig.json`
-- `jest.config.ts`
-- `devDependencies`: `typescript`, `jest`, `ts-jest`, `@types/jest`
+- `tsconfig.json` — target: `ES2020`, module: `commonjs`, strict mode enabled, includes `src/**/*.ts` and `test/**/*.ts`
+- `jest.config.ts` — preset: `ts-jest`, testEnvironment: `node`, testMatch: `**/test/**/*.test.ts`
+- `devDependencies`: `typescript`, `jest`, `ts-jest`, `ts-node`, `@types/jest`
+
+> `ts-node` is required for Jest to parse the TypeScript config file (`jest.config.ts`). If you see:
+> ```
+> Error: Jest: 'ts-node' is required for the TypeScript configuration files.
+> ```
+> Run:
+> ```bash
+> npm install --save-dev ts-node
+> ```
 
 ---
 
